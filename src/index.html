@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Push Notification Bonk Demo</title>
+    <link rel="manifest" href="/manifest.webmanifest">
+    <style>
+      body {
+        font-family: sans-serif;
+        width: min(600px, 100vw);
+        margin: 0px;
+        margin-left: calc((100vw - min(600px, 100vw)) / 2);
+      }
+
+      section {
+        box-sizing: border-box;
+        display: inline-block;
+        width: 49%;
+        padding: 5px;
+        border: solid 1px black;
+        border-radius: 1.5em;
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      h1 {
+        width: 100vw;
+        margin: 0;
+        margin-left: calc((100vw - min(600px, 100vw)) / -2);
+        background: dodgerblue;
+        padding: 1em;
+        color: white;
+      }
+
+      a {
+        color: dodgerblue;
+      }
+
+      input, button {
+        font: inherit;
+        border: solid 1px black;
+        padding: 0.5em;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Push Notification Bonk Demo</h1>
+    <p>
+      This demonstration showcases the use of Cloudflare Workers to deliver push notifications through the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Push_API" target="_blank">Web Push API</a>. When you click subscribe, your browser generates subscription credentials, which are then sent to a Cloudflare Worker and stored in a Workers KV database. The worker then returns a 6-character key, used to identify your subscription. As this is only a demo, these keys are retained for 24 hours and then deleted. You can then enter that same key on this page (even from another device), which will cause the worker to retrieve the subscription credentials and dispatch a notification, or bonk, to your browser.
+    </p>
+    <p>
+      On desktop Chrome and Firefox, notifications are only received when the browser is running. To use web push notifications on iOS or iPadOS, you will need to be in Safari and have this page saved to your home screen in order for the notification permission to succeed.
+    </p>
+    <p>
+      Demo by <a href="https://kyleplo.com" target="_blank">kyleplo</a>. Source code available on <a href="https://github.com/kyleplo/push-notif-bonk-demo" target="_blank">Github</a>.
+    </p>
+    <section>
+      <p>
+        Subscribe to get a key to get bonked.
+      </p>
+      <p>
+        <button id="subscribe" disabled>Subscribe</button>
+      </p>
+      <p id="status"></p>
+    </section>
+    <section>
+      <p>Enter a key to bonk:</p>
+      <p>
+        <input type="text" id="keyToBonk" maxlength="6">
+        <button id="bonk">Bonk</button>
+      </p>
+    </section>
+    <script src="/script.js"></script>
+  </body>
+</html>

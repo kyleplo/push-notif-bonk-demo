@@ -1,0 +1,10 @@
+{
+  "short_name": "Bonk",
+  "name": "Push Notification Bonk Demo",
+  "start_url": "/",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#ffffff",
+  "description": "Demonstation of the Web Push API using Cloudflare Workers."
+}
